@@ -114,23 +114,41 @@ $(document).ready(function() {
         e.preventDefault();
         
         // Get form values
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const subject = $('#subject').val();
-        const message = $('#message').val();
-        
+        let name = $('#name').val();
+        let email = $('#email').val();
+        let subject = $('#subject').val();
+        let message = $('#message').val();
+        message = "Subject: "+ subject + "\n Message:" + message
         // Basic form validation
         if (name.trim() === '' || email.trim() === '' || subject.trim() === '' || message.trim() === '') {
             alert('Please fill in all fields');
             return;
         }
         
-        // Here you would typically send the form data to a server
-        // For demo purposes, we'll just show an alert
-        alert('Thank you for your message! I will get back to you soon.');
+        // Form submission to the API endpoint
+        const payload = {
+            name: name,
+            email: email,
+            message: message
+        };
         
-        // Reset form
-        this.reset();
+        const statusDiv = $('#form-status');
+        statusDiv.text('Sending...').removeClass().addClass('form-status sending').show();
+        
+        $.ajax({
+            url: 'https://sendportfolioemail-e5kjoqw3ta-uc.a.run.app/sendPortfolioEmail',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(response) {
+                statusDiv.text('Message sent! Vijaykanth will get back to you soon.').removeClass().addClass('form-status success');
+                $('#contactForm')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                statusDiv.text('Something went wrong. Please try again later.').removeClass().addClass('form-status error');
+                console.error('Error:', error);
+            }
+        });
     });
 
     // Initialize AOS (Animate On Scroll) if available

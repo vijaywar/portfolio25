@@ -225,7 +225,7 @@ nav {
     height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 320px;
     background-color: var(--bg-color);
     position: relative;
     overflow: hidden;
@@ -849,6 +849,32 @@ nav {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+}
+
+.form-status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.form-status.sending {
+    display: block;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.form-status.success {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.form-status.error {
+    display: block;
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
 /* Footer */
