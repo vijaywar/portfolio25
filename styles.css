@@ -147,10 +147,11 @@ header {
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
+    transform-origin: top center;
 }
 
 header.sticky {
-    padding: 10px 0;
+    padding: 5px 0;
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -159,11 +160,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--primary-color);
 }
@@ -174,7 +175,7 @@ nav {
 }
 
 .nav-links li {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .nav-links a {
@@ -183,6 +184,7 @@ nav {
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover,
@@ -225,12 +227,12 @@ nav {
     height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 320px;
+    padding-top: 220px;
     background-color: var(--bg-color);
     position: relative;
     overflow: hidden;
 }
-
+ 
 .hero::before {
     content: '';
     position: absolute;
@@ -268,8 +270,8 @@ nav {
 }
 
 .profile-img-container {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     border: 5px solid var(--primary-color);
@@ -980,7 +982,14 @@ footer {
     background-color: #3a59e0;
     transform: translateY(-5px);
 }
-
+@media screen and (max-width:2000px) {
+    .hero-content{
+    transform: scale(0.8); /* Changed from 0.8 to 0.64 (80% of 0.8) */
+    }
+    .hero{
+        transform: scale(0.95); /* Changed from 0.8 to 0.64 (80% of 0.8) */
+        }
+}
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     .hero h1 {
